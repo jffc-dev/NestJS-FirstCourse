@@ -28,6 +28,7 @@ export const charmander: Pokemon = {
 // console.log(charmander)
 
 export const pokemons: Pokemon[] = []
-pokemons.push(pikachu, charmander, 1)
+pokemons.push(pikachu, charmander)
 
 console.log(pokemons)
+
