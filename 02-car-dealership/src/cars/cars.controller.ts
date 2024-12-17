@@ -1,17 +1,19 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
   Get,
   Param,
-  ParseIntPipe,
   ParseUUIDPipe,
   Patch,
   Post,
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
+import { UpdateCarDto } from './dto/update-car.dto';
 
+// @UsePipes(ValidationPipe)
 @Controller('cars')
 export class CarsController {
   constructor(private readonly carsService: CarsService) {}
@@ -27,19 +29,22 @@ export class CarsController {
 
   @Post()
   createCar(@Body() createCarDto: CreateCarDto) {
-    return createCarDto;
+    return this.carsService.create(createCarDto);
   }
 
   @Patch(':id')
-  updateCar(@Param('id', ParseUUIDPipe) id: string, @Body() payload: any) {
-    return {
-      id,
-      payload,
-    };
+  updateCar(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() updateCarDto: UpdateCarDto,
+  ) {
+    if (id !== updateCarDto.id) {
+      return new BadRequestException('Param ID and Body ID are not equal');
+    }
+    return this.carsService.update(id, updateCarDto);
   }
 
   @Delete(':id')
-  deleteCar(@Param('id', ParseIntPipe) id: string) {
-    return id;
+  deleteCar(@Param('id', ParseUUIDPipe) id: string) {
+    return this.carsService.delete(id);
   }
 }
