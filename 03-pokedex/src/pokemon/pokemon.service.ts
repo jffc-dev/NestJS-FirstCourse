@@ -26,19 +26,6 @@ export class PokemonService {
     }
   }
 
-  async createMany(createPokemonDtos: CreatePokemonDto[]) {
-    createPokemonDtos.forEach((dto) => {
-      dto.name = dto.name.toLowerCase();
-    });
-
-    try {
-      const pokemon = await this.pokemonModel.create(createPokemonDtos);
-      return pokemon;
-    } catch (error) {
-      this.handleExceptions(error);
-    }
-  }
-
   async findAll() {
     return await this.pokemonModel.find();
   }
