@@ -22,3 +22,8 @@ docker-compose up -d
 ## Stack
 * MongoDB
 * Nest
+
+5. In order to populate databse with the seed, make a get request to this route
+```
+{{LOCAL_ROUTE}}/api/v2/seed
+```
