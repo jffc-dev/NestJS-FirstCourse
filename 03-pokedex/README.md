@@ -22,8 +22,17 @@ docker-compose up -d
 ## Stack
 * MongoDB
 * Nest
+  
+5. Clone file __.env.template__ and rename the copy to __.env__
 
-5. In order to populate databse with the seed, make a get request to this route
+6. Fill the environment variables in the __.env__ file
+   
+7. Exec the app in dev environment
+```
+npm run start:dev
+```
+
+8. In order to populate databse with the seed, make a get request to this route
 ```
 {{LOCAL_ROUTE}}/api/v2/seed
 ```
