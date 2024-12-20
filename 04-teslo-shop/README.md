@@ -17,3 +17,11 @@ npm i -g @nestjs/cli
 4. Setup database
 ```
 docker-compose up -d
+```
+
+5. Change environment variables in .env file
+   
+6. Exec the app in dev mode 
+```
+npm run start:dev
+```
