@@ -25,3 +25,8 @@ docker-compose up -d
 ```
 npm run start:dev
 ```
+
+7. Exec seed request
+```
+{{LOCAL_ROUTE}}/api/seed
+```
