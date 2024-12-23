@@ -6,6 +6,7 @@ export const fileFilter = (
   callback: (error: Error | null, acceptFile: boolean) => void,
 ): void => {
   if (!file) return callback(new Error('File is empty'), false);
+
   const fileExtension = file.mimetype.split('/')[1];
   const validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
 
